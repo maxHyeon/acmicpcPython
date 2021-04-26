@@ -13,8 +13,11 @@ def procInputs(dataSize):
         score.scores.append(list(map(lambda x: int(x) if x.isdigit() else x, input().split())))
     return score
 
+def scoreSort(scores,sortKey,reverse):
+    return sorted(scores,key=lambda input: (input[sortKey-1],input.index(input[0])),reverse=reverse)
+
 def printScoreBoard(inputs):
-    sortedScore = sorted(inputs.scores,key=lambda input: (input[1],input.index(input[0])),reverse=True)
+    sortedScore = scoreSort(inputs.scores,2,True)
     for i in range(inputs.printAmount):
         print(sortedScore[i][0])
 
