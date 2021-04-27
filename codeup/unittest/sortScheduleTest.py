@@ -3,6 +3,8 @@ from unittest.mock import patch
 from codeup.sortSchedule import multiLineInputProc
 from codeup.sortSchedule import procInputs
 from codeup.sortSchedule import splitData
+from codeup.sortSchedule import strToDate
+import datetime
 
 class PrintScoreBoardTest(unittest.TestCase):
     def test_multiLineInputProc(self):
@@ -35,6 +37,12 @@ class PrintScoreBoardTest(unittest.TestCase):
         index = 1
         with patch("builtins.input",side_effect=rawData1):
             rslt = splitData(rawData1,index)
+        self.assertEqual(rslt,expect1)
+    def test_strToDate(self):
+        rawData1 = "2019 01 01"
+        expect1 = datetime.datetime.strptime("2019-01-01","%Y-%m-%d")
+        with patch("builtins.input",side_effect=rawData1):
+            rslt = strToDate(rawData1)
         self.assertEqual(rslt,expect1)
 if __name__ == '__main__':
     unittest.main()

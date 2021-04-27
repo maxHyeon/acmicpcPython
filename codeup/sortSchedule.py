@@ -1,3 +1,4 @@
+import datetime
 class schedule:
     def __init__(self):
         self.title = ''
@@ -11,6 +12,10 @@ def multiLineInputProc(lineAmount):
 
 def splitData(rawData,index):
     return rawData.split(' ',index)
+
+def strToDate(str):
+    proceedDate = datetime.datetime.strptime(str, "%Y %m %d")
+    return proceedDate
 
 def procInputs(inputs):
     proceedInputs = []
