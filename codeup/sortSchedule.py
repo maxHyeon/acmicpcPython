@@ -1,8 +1,8 @@
 import datetime
 class schedule:
-    def __init__(self):
-        self.title = ''
-        self.date
+    def __init__(self,title,date):
+        self.title = title
+        self.date = date
 
 def multiLineInputProc(lineAmount):
     inputs=[]
@@ -24,8 +24,14 @@ def procInputs(inputs):
         proceedInputs.append(splitData(i,splitIndex))
     return proceedInputs
 
+def mkSchedule(proceedInputs):
+    schedules = []
+    for i in proceedInputs:
+        schedules.append(schedule(i[0],strToDate(i[1])))
+    return schedules
+
 def main(input):
-    multiLineInputProc(input)
+    print ( procInputs(multiLineInputProc(input)) )
 
 if __name__ == "__main__":
     main(input())
